@@ -33,13 +33,18 @@ extern "C" {
 /* USER CODE END Includes */
 
 /* USER CODE BEGIN Private defines */
-
+enum led_pin {
+    D4 = GPIO_PIN_2,
+    D5 = GPIO_PIN_3
+};
 /* USER CODE END Private defines */
 
 void MX_GPIO_Init(void);
 
 /* USER CODE BEGIN Prototypes */
+void LedOpen(enum led_pin pin);
 
+void LedClose(enum led_pin pin);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

@@ -63,5 +63,12 @@ void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 2 */
+void LedOpen(enum led_pin pin) {
+    	HAL_GPIO_WritePin(GPIOC, pin, GPIO_PIN_RESET);
+}
 
+
+void LedClose(enum led_pin pin) {
+    	HAL_GPIO_WritePin(GPIOC, pin, GPIO_PIN_SET);
+}
 /* USER CODE END 2 */
