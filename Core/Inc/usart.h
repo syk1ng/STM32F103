@@ -36,7 +36,8 @@ extern "C" {
 extern UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN Private defines */
-
+extern uint8_t g_rx_buf[1];
+extern uint8_t g_usart1_rx_flag;
 /* USER CODE END Private defines */
 
 void MX_USART1_UART_Init(void);
@@ -44,8 +45,7 @@ void MX_USART1_UART_Init(void);
 /* USER CODE BEGIN Prototypes */
 int __io_putchar(int ch);
 int _write(int file, char *ptr, int len);
-
-
+void  HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

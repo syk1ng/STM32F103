@@ -21,7 +21,8 @@
 #include "usart.h"
 
 /* USER CODE BEGIN 0 */
-
+uint8_t g_rx_buf[1];
+uint8_t g_usart1_rx_flag = 0;
 /* USER CODE END 0 */
 
 UART_HandleTypeDef huart1;
@@ -52,6 +53,7 @@ void MX_USART1_UART_Init(void)
   }
   /* USER CODE BEGIN USART1_Init 2 */
   __HAL_UART_ENABLE_IT(&huart1, UART_IT_RXNE);
+  HAL_UART_Receive_IT(&huart1, g_rx_buf, 1);
   /* USER CODE END USART1_Init 2 */
 
 }
@@ -128,5 +130,14 @@ int _write(int fd, char *ptr, int len)
 {
     HAL_UART_Transmit(&huart1, (uint8_t*)ptr, len, 0xFFFF);
     return len;
+}
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+    if(huart->Instance==USART1)
+    {
+        g_usart1_rx_flag = 1;
+    }
+    HAL_UART_Receive_IT(&huart1, g_rx_buf, 1);
 }
 /* USER CODE END 1 */

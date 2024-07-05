@@ -20,12 +20,12 @@
 #include "main.h"
 #include "usart.h"
 #include "gpio.h"
-#include "Userapp.h"
-#include "time.h"
+
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "Userapp.h"
+#include "time.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
