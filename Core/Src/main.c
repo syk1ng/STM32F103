@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "dma.h"
 #include "iwdg.h"
 #include "tim.h"
 #include "usart.h"
@@ -91,11 +92,13 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_USART1_UART_Init();
   MX_IWDG_Init();
-  MX_TIM6_Init();
+  // MX_TIM6_Init();
   /* USER CODE BEGIN 2 */
   delay_init(72);
+  UserApp();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -103,7 +106,6 @@ int main(void)
   while (1)
   {
     iwdg_feed();
-    UserApp();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

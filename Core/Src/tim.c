@@ -19,16 +19,15 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "tim.h"
-#include "gpio.h"
 
 /* USER CODE BEGIN 0 */
-
+#include "gpio.h"
 /* USER CODE END 0 */
 
 TIM_HandleTypeDef htim6;
 
 /* TIM6 init function */
-void MX_TIM6_Init(void)
+void MX_TIM6_Init(const uint16_t a, const uint16_t b)
 {
 
   /* USER CODE BEGIN TIM6_Init 0 */
@@ -41,9 +40,9 @@ void MX_TIM6_Init(void)
 
   /* USER CODE END TIM6_Init 1 */
   htim6.Instance = TIM6;
-  htim6.Init.Prescaler = 7199;
+  htim6.Init.Prescaler = a;
   htim6.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim6.Init.Period = 4999;
+  htim6.Init.Period = b;
   htim6.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim6) != HAL_OK)
   {
@@ -104,6 +103,7 @@ void TIM6_IRQHandler(void) {
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
   if (htim->Instance == TIM6) {
     LedToggle(D4);
+    LedToggle(D5);
   }
 }
 /* USER CODE END 1 */
