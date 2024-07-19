@@ -19,6 +19,7 @@ void UserApp() {
     // LedOpen(D5);
     // uint8_t tx_temp[1];
     // tx_temp[0] = 0x01;
+    // LedToggle(D4);
     if (g_usart1_rx_flag == 1) {
         HAL_UART_Transmit(&huart1, (uint8_t *)g_rx_buf, 1, 100);
         while(__HAL_UART_GET_FLAG(&huart1, UART_FLAG_TC) != 1)
